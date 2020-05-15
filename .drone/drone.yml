@@ -1,0 +1,64 @@
+---
+kind: pipeline
+type: docker
+name: build-aarch64
+
+platform:
+  arch: arm64
+  os: linux
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      repo: ${DRONE_REPO}
+      tags:
+        - ${DRONE_BRANCH}-amd64
+        - latest-aarch64
+      username: andreipoe
+      password:
+        from_secret: docker_token
+
+---
+kind: pipeline
+type: docker
+name: build-amd64
+
+platform:
+  arch: amd64
+  os: linux
+
+steps:
+  - name: build
+    image: plugins/docker
+    settings:
+      repo: ${DRONE_REPO}
+      tags:
+        - ${DRONE_BRANCH}-amd64
+        - latest-amd64
+      username: andreipoe
+      password:
+        from_secret: docker_token
+
+---
+kind: pipeline
+type: docker
+name: multiarch-manifest
+
+steps:
+  - name: manifest
+    image: plugins/manifest
+    settings:
+      target: ${DRONE_REPO}
+      spec: .drone/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+
+depends_on: [build-aarch64, build-amd64]
+
+---
+kind: signature
+hmac: fc77a370e684038f2dc0d27d439b33ea5b37e28f949ee90b46cab36c06eca7c1
+
+...
