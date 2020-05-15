@@ -13,7 +13,7 @@ steps:
     settings:
       repo: ${DRONE_REPO}
       tags:
-        - ${DRONE_BRANCH}-amd64
+        - ${DRONE_BRANCH}-aarch64
         - latest-aarch64
       username: andreipoe
       password:
@@ -59,6 +59,6 @@ depends_on: [build-aarch64, build-amd64]
 
 ---
 kind: signature
-hmac: fc77a370e684038f2dc0d27d439b33ea5b37e28f949ee90b46cab36c06eca7c1
+hmac: ba8fff0c7d1e82965e616c0d5a9fe157b59f37402b80efe8ec49687125837208
 
 ...
