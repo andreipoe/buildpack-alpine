@@ -54,11 +54,27 @@ steps:
       username: andreipoe
       password:
         from_secret: docker_token
+  - name: healthcheck
+    image: ubuntu
+    environment:
+      HEALTHCHECKS_URL:
+        from_secret: healthchecks_url
+    commands:
+      - apt-get update
+      - apt-get -y install curl
+      - |
+        if [ ${DRONE_BUILD_STATUS} = success ]; then
+          curl --retry 3 $${HEALTHCHECKS_URL}
+        else
+          curl --retry 3 $${HEALTHCHECKS_URL}/fail
+        fi
+    when:
+      status: [success, failure]
 
 depends_on: [build-aarch64, build-amd64]
 
 ---
 kind: signature
-hmac: ba8fff0c7d1e82965e616c0d5a9fe157b59f37402b80efe8ec49687125837208
+hmac: fdb98d40bbe533db61eb32acae0f2336e29a64c75c743cf03963075ac00c279d
 
 ...
