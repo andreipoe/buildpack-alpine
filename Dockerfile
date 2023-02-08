@@ -1,4 +1,4 @@
-FROM alpine:3.11
+FROM alpine:3.17
 LABEL maintainer "Andrei Poenaru <docker@simd.stream>"
 
 RUN apk --no-cache add \
