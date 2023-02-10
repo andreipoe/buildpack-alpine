@@ -6,6 +6,7 @@ RUN apk --no-cache add \
     automake \
     bash \
     gcc \
+    g++ \
     git \
     make \
     musl-dev \
