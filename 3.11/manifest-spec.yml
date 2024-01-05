@@ -1,0 +1,11 @@
+image: andreipoe/buildpack-alpine:3.11
+
+manifests:
+  - image: andreipoe/buildpack-alpine:3.11-aarch64
+    platform:
+      architecture: arm64
+      os: linux
+  - image: andreipoe/buildpack-alpine:3.11-amd64
+    platform:
+      architecture: amd64
+      os: linux

@@ -8,16 +8,31 @@ platform:
   os: linux
 
 steps:
-  - name: build
+  - name: build-3.11
     image: plugins/docker
     settings:
       repo: ${DRONE_REPO}
       tags:
-        - ${DRONE_BRANCH}-aarch64
+        - 3.11-aarch64
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-3.17
+    image: plugins/docker
+    settings:
+      repo: ${DRONE_REPO}
+      tags:
+        - 3.17-aarch64
         - latest-aarch64
       username: andreipoe
       password:
         from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
 
 ---
 kind: pipeline
@@ -29,16 +44,31 @@ platform:
   os: linux
 
 steps:
-  - name: build
+  - name: build-3.11
     image: plugins/docker
     settings:
       repo: ${DRONE_REPO}
       tags:
-        - ${DRONE_BRANCH}-amd64
+        - 3.11-amd64
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-3.17
+    image: plugins/docker
+    settings:
+      repo: ${DRONE_REPO}
+      tags:
+        - 3.17-amd64
         - latest-amd64
       username: andreipoe
       password:
         from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
 
 ---
 kind: pipeline
@@ -46,10 +76,17 @@ type: docker
 name: multiarch-manifest
 
 steps:
-  - name: manifest
+  - name: manifest-3.11
     image: plugins/manifest
     settings:
-      spec: .drone/manifest-spec.yml
+      spec: 3.11/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
+  - name: manifest-3.17
+    image: plugins/manifest
+    settings:
+      spec: 3.17/manifest-spec.yml
       username: andreipoe
       password:
         from_secret: docker_token
@@ -74,6 +111,6 @@ depends_on: [build-aarch64, build-amd64]
 
 ---
 kind: signature
-hmac: d0b4fb8da10dd6ef7d1d91576cdbc07cd699e7fc7e9ca00777b9c95f8bced8f1
+hmac: 4457c1c2cb5f46bac20f43849710fba994959a666efc3922c3e275a73e6c56a7
 
 ...
