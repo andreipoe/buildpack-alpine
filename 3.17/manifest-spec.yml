@@ -1,5 +1,4 @@
 image: andreipoe/buildpack-alpine:3.17
-tags: [latest]
 
 manifests:
   - image: andreipoe/buildpack-alpine:3.17-aarch64

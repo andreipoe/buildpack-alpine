@@ -10,4 +10,6 @@ It comes with many common build dependencies pre-installed.
 The following Alpine versions are supported:
 
 * [`3.11`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.11/Dockerfile)
-* [`3.17` (`latest`)](https://github.com/andreipoe/buildpack-alpine/blob/master/3.17/Dockerfile)
+* [`3.17`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.17/Dockerfile)
+* [`3.18`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.18/Dockerfile)
+* [`3.19` (`latest`)](https://github.com/andreipoe/buildpack-alpine/blob/master/3.19/Dockerfile)
