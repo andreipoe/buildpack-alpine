@@ -14,6 +14,7 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.11-aarch64
+      dockerfile: "3.11/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -26,6 +27,7 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.17-aarch64
+      dockerfile: "3.17/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -38,6 +40,7 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.18-aarch64
+      dockerfile: "3.18/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -51,6 +54,7 @@ steps:
       tags:
         - 3.19-aarch64
         - latest-aarch64
+      dockerfile: "3.19/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -74,6 +78,7 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.11-amd64
+      dockerfile: "3.11/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -86,6 +91,7 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.17-amd64
+      dockerfile: "3.17/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -98,6 +104,7 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.18-amd64
+      dockerfile: "3.18/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -111,6 +118,7 @@ steps:
       tags:
         - 3.19-amd64
         - latest-amd64
+      dockerfile: "3.19/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -173,6 +181,6 @@ depends_on: [build-aarch64, build-amd64]
 
 ---
 kind: signature
-hmac: 38d5c60e243aab467aa59a93ceb588d1fef1d31599c15903328f04ce32a19357
+hmac: d9aec8ac7d2503abc368c99a88c3f98fef8f860d750b7006fd8a6191e0e3f030
 
 ...
