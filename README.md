@@ -12,4 +12,6 @@ The following Alpine versions are supported:
 * [`3.11`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.11/Dockerfile)
 * [`3.17`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.17/Dockerfile)
 * [`3.18`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.18/Dockerfile)
-* [`3.19` (`latest`)](https://github.com/andreipoe/buildpack-alpine/blob/master/3.19/Dockerfile)
+* [`3.19`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.19/Dockerfile)
+* [`3.20`](https://github.com/andreipoe/buildpack-alpine/blob/master/3.20/Dockerfile)
+* [`3.21` (`latest`)](https://github.com/andreipoe/buildpack-alpine/blob/master/3.21/Dockerfile)
