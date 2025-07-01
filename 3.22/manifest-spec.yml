@@ -1,0 +1,12 @@
+image: andreipoe/buildpack-alpine:3.22
+tags: [latest]
+
+manifests:
+  - image: andreipoe/buildpack-alpine:3.22-aarch64
+    platform:
+      architecture: arm64
+      os: linux
+  - image: andreipoe/buildpack-alpine:3.22-amd64
+    platform:
+      architecture: amd64
+      os: linux

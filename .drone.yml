@@ -53,8 +53,21 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.21-aarch64
-        - latest-aarch64
       dockerfile: "3.21/Dockerfile"
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-3.22
+    image: plugins/docker
+    settings:
+      repo: ${DRONE_REPO}
+      tags:
+        - 3.22-aarch64
+        - latest-aarch64
+      dockerfile: "3.22/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -117,8 +130,21 @@ steps:
       repo: ${DRONE_REPO}
       tags:
         - 3.21-amd64
-        - latest-amd64
       dockerfile: "3.21/Dockerfile"
+      username: andreipoe
+      password:
+        from_secret: docker_token
+    depends_on: [clone]
+    when:
+      status: [success, failure]
+  - name: build-3.22
+    image: plugins/docker
+    settings:
+      repo: ${DRONE_REPO}
+      tags:
+        - 3.22-amd64
+        - latest-amd64
+      dockerfile: "3.22/Dockerfile"
       username: andreipoe
       password:
         from_secret: docker_token
@@ -160,6 +186,13 @@ steps:
       username: andreipoe
       password:
         from_secret: docker_token
+  - name: manifest-3.22
+    image: plugins/manifest
+    settings:
+      spec: 3.22/manifest-spec.yml
+      username: andreipoe
+      password:
+        from_secret: docker_token
   - name: healthcheck
     image: ubuntu
     environment:
@@ -181,6 +214,6 @@ depends_on: [build-aarch64, build-amd64]
 
 ---
 kind: signature
-hmac: 5b2ac5446db0fff16a17b2a66b47c8e294ddceab56a5bfa1be4fb8f2cfda5e1d
+hmac: 76ea1e59ab7b082b220844adb5b154429a49d46072083e178b5ed34436d87dce
 
 ...
